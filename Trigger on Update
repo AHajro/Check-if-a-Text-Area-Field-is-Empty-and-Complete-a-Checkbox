@@ -1,0 +1,13 @@
+ public override void beforeUpdate()
+    {
+        for(Contact cont: (List<Contact>) Trigger.new)
+        {
+           
+            Contact oldCont = (Contact)Trigger.oldMap.get(cont.id);
+            
+           if ((String.isBlank(cont.Oplon_Altre_Cariche__c) && !(String.isBlank(oldCont.Oplon_Altre_Cariche__c)) || ((String.isBlank(oldCont.Oplon_Altre_Cariche__c) && !(String.isBlank(cont.Oplon_Altre_Cariche__c)))))){
+                System.debug('bosh');
+               ContactController.checkAltreCariche(Trigger.new, (Map<id,Contact>)Trigger.oldMap);  
+            }
+      }      
+    }
