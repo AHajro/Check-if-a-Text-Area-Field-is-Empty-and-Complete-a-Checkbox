@@ -1,0 +1,17 @@
+public static void checkAltreCariche(List<Contact> cont, Map<Id, Contact> oldContList){
+        
+        System.debug('ContactController.checkAltreCariche - Start');
+    
+        for(Contact c: cont){
+            Contact oldCont = oldContList.get(c.id);
+            
+            if ((String.isBlank(c.Oplon_Altre_Cariche__c) && !(String.isBlank(oldCont.Oplon_Altre_Cariche__c)))){
+                
+                c.Altre_Cariche_Flag__c = false;
+            }
+                
+                if ((String.isBlank(oldCont.Oplon_Altre_Cariche__c) && !(String.isBlank(c.Oplon_Altre_Cariche__c)))){
+                    
+                    c.Altre_Cariche_Flag__c = true;
+                }
+            System.debug('ContactController.checkAltreCariche - End');
